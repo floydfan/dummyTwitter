@@ -12,11 +12,16 @@ object ApplicationBuild extends Build {
     javaCore,
     javaJdbc,
     javaEbean,
-    "postgresql" % "postgresql" % "8.4-702.jdbc4"
+    "postgresql" % "postgresql" % "8.4-702.jdbc4",
+    "org.twitter4j" % "twitter4j-core" % "3.0.3",
+    "mysql" % "mysql-connector-java" % "5.1.18"
   )
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
-    // Add your own project settings here      
+    resolvers += "JBoss repository" at "https://repository.jboss.org/nexus/content/repositories/",
+    resolvers += "Scala-Tools Maven2 Snapshots Repository" at
+      "http://scala-tools.org/repo-snapshots",
+    resolvers += "twitter4j-repo" at "http://twitter4j.org/maven2"
   )
 
 }

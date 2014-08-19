@@ -4,23 +4,26 @@
 # --- !Ups
 
 create table task (
-  id                        bigint not null,
+  id                        bigint auto_increment not null,
   label                     varchar(255),
   constraint pk_task primary key (id))
 ;
 
-create sequence task_seq;
+create table tweets (
+  tweet_id                  bigint auto_increment not null,
+  constraint pk_tweets primary key (tweet_id))
+;
 
 
 
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+SET FOREIGN_KEY_CHECKS=0;
 
-drop table if exists task;
+drop table task;
 
-SET REFERENTIAL_INTEGRITY TRUE;
+drop table tweets;
 
-drop sequence if exists task_seq;
+SET FOREIGN_KEY_CHECKS=1;
 
