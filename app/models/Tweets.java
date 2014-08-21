@@ -10,4 +10,15 @@ import play.db.ebean.Model;
 public class Tweets extends Model{
     @Id
     public Long tweet_id;
+
+    public String tweet_text;
+
+    public String created_at;
+
+    public int favorite_count;
+
+    public double latitude;
+
+    public double longitude;
+
 }

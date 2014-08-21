@@ -11,6 +11,11 @@ create table task (
 
 create table tweets (
   tweet_id                  bigint auto_increment not null,
+  tweet_text                varchar(255),
+  created_at                varchar(255),
+  favorite_count            integer,
+  latitude                  double,
+  longitude                 double,
   constraint pk_tweets primary key (tweet_id))
 ;
 

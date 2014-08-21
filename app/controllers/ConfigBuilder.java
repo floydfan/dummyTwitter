@@ -9,10 +9,10 @@ public class ConfigBuilder {
     static final ConfigurationBuilder getConfigBuilder() {
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("ueA9UXPs4gsnv4RsZmdbi2QIS")
-                .setOAuthConsumerSecret("dlJ9mNFQKdokGVRWjRTqJnw1tgElmq2x3aGs7pokKPlfe2hQY4")
-                .setOAuthAccessToken("1717837063-R6wdfSAqKV2vRYDndZ8AmhYEPvqgE7Wyh5mWd5f")
-                .setOAuthAccessTokenSecret("fndfn8kKStz4LcmzH0xLGLBbq71bcFMhMg5wzw1xwkD67");
+                .setOAuthConsumerKey("pkgyqwnkhNPgDWTdKa9IysVCa")
+                .setOAuthConsumerSecret("dAvIhZvLkqcrbwaBQFoRQGV37YVjOCu9KQ6fCc4bQmcZ6dDTri")
+                .setOAuthAccessToken("1717837063-fPYom7nBq0X4kU2iiEuM8ws4ZL7nz4YmGdOAig6")
+                .setOAuthAccessTokenSecret("biZfHMiRXCo5RVgTeJiGRAJjwIamKgRQ4rirYdEVzKgsP");
         return cb;
     }
 }
