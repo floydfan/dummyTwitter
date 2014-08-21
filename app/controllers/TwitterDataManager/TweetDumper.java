@@ -1,5 +1,6 @@
 package controllers.TwitterDataManager;
 
+import play.Logger;
 import twitter4j.HashtagEntity;
 import twitter4j.QueryResult;
 import twitter4j.Status;
@@ -11,25 +12,27 @@ import java.sql.*;
  */
 
 public class TweetDumper {
-	private final String tweetTableName = "Tweet_Info";
-    private play.Logger.ALogger logger;
+	private final String allTweetsTable = "Tweet_Info";
+    private final String brandTweetsTable = "Brand_Tweet";
+    private final String twitterHandlesTable = "Twitter_Handle";
+    private final String hashTagsTable = "Hash_Tags";
+    private final String topicsTable = "Topics";
     private Connection dbConnection = null;
     private PreparedStatement preparedStatement = null;
 
     TweetDumper() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
         dbConnection = DriverManager.getConnection("jdbc:mysql://localhost/myApp", "root", "root");
-        logger = play.Logger.of("application");
 	    initialize();
     }
 
 	private void initialize() throws SQLException{
-		if(!tableExists(tweetTableName)) createTweetsTable();
+		if(!tableExists(allTweetsTable)) createTweetsTable();
 	}
 
 	private void createTweetsTable() throws SQLException{
 
-		String query = "Create Table "+ tweetTableName +
+		String query = "Create Table "+ allTweetsTable +
 		" (Tweet_ID BIGINT(20) PRIMARY KEY NOT NULL," +
 		"Tweet_Text VARCHAR(145),Time_Stamp TIMESTAMP NOT NULL," +
 		"Retweet_Count INT(11),Longitude DOUBLE,Latitude DOUBLE," +
@@ -63,7 +66,7 @@ public class TweetDumper {
             preparedStatement.setBoolean(8, tweet.isRetweet());   //change value
             preparedStatement.execute();
         } catch (SQLException e) {
-            logger.error(e.toString());
+            Logger.debug(e.toString());
         }
     }
 
@@ -89,7 +92,7 @@ public class TweetDumper {
             preparedStatement.execute();
 
         } catch (SQLException e) {
-            logger.error(e.toString());
+            Logger.error(e.toString());
         }
     }
 
@@ -110,7 +113,7 @@ public class TweetDumper {
                 preparedStatement.execute();
             }
         } catch (SQLException e) {
-            logger.error(e.toString());
+            Logger.error(e.toString());
         }
     }
 
